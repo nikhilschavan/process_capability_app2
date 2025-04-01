@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Process Capability Report Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Upload Data File for Process Capability Report</h1>
+        
+        <!-- USL and LSL inputs -->
+        <div>
+            <label for="usl">Upper Specification Limit (USL):</label>
+            <input type="number" id="usl" step="any" required>
+        </div>
+        
+        <div>
+            <label for="lsl">Lower Specification Limit (LSL):</label>
+            <input type="number" id="lsl" step="any" required>
+        </div>
+        
+        <!-- File upload -->
+        <div id="upload-area">
+            <input type="file" id="file-upload" accept=".csv, .xlsx" />
+            <button id="upload-button" onclick="uploadFile()">Generate Report</button>
+        </div>
+        
+        <div id="progress-bar" style="display:none;">
+            <p>Uploading...</p>
+            <progress id="progress" value="0" max="100"></progress>
+        </div>
+
+        <div id="download-link" style="display:none;">
+            <a id="download-report" href="#">Download the Process Capability Report</a>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
